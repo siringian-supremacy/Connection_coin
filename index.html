@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#000000" />
+  <meta name="description" content="Custom Blockchain Cryptocurrency App" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <title>Crypto App</title>
+  <link rel="manifest" href="/manifest.json" />
+  <link rel="icon" type="image/png" href="/A_digital_vector_graphic_of_a_coin-like_symbol_rep.png" />
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <div class="app-container">
+    <h1>Welcome to the Crypto App</h1>
+    <div class="balance-info">
+      <p>Total Coins: <span id="total-coins">Loading...</span></p>
+      <p>Your Balance: <span id="user-balance">Loading...</span></p>
+    </div>
+    <button id="connect-wallet">Connect Wallet</button>
+    <div class="transaction-section">
+      <h2>Send Coins</h2>
+      <form id="send-coins-form">
+        <input type="text" id="recipient-id" placeholder="Recipient ID" required />
+        <input type="number" id="amount" placeholder="Amount" required />
+        <button type="submit">Send Coins</button>
+      </form>
+    </div>
+  </div>
+  <script src="/blockchain.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/service-worker.js')
+          .then(reg => console.log('Service Worker registered:', reg.scope))
+          .catch(err => console.error('Service Worker registration failed:', err));
+      });
+    }
+  </script>
+</body>
+</html>
